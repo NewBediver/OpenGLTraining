@@ -6,8 +6,8 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Texture/StbBuild.h"
-#include "Shader/Shader.h"
 #include "Camera/Camera.h"
+#include "Shader/Shader.h"
 
 #include <iostream>
 

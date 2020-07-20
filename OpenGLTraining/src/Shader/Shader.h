@@ -21,6 +21,7 @@ public:
 	void SetInt(const std::string& name, int value) const;
 	void SetFloat(const std::string& name, float value) const;
 	void SetMat4(const std::string& name, const glm::mat4& matrix) const;
+	void SetVec3(const std::string& name, const glm::vec3& value) const;
 
 	const int GetID() const { return _id; }
 
