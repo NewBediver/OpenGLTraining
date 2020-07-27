@@ -31,25 +31,22 @@ void Camera::ProcessMouseScroll(float yOffset)
 	SetZoom(_zoom - yOffset);
 }
 
-void Camera::ProcessMouseMovement(float xPos, float yPos)
+void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
 {
-	if (_firstMovement) {
-		_lastXPos = xPos;
-		_lastYPos = yPos;
-		_firstMovement = false;
+	xoffset *= _sensitivity;
+	yoffset *= _sensitivity;
+
+	_yaw += xoffset;
+	_pitch += yoffset;
+
+	// make sure that when pitch is out of bounds, screen doesn't get flipped
+	if (constrainPitch)
+	{
+		if (_pitch > 89.0f) _pitch = 89.0f;
+		if (_pitch < -89.0f) _pitch = -89.0f;
 	}
 
-	float xOffset = xPos - _lastXPos;
-	float yOffset = _lastYPos - yPos;
-	_lastXPos = xPos;
-	_lastYPos = yPos;
-
-	xOffset *= _sensitivity;
-	yOffset *= _sensitivity;
-
-	SetYaw(_yaw + xOffset);
-	SetPitch(_pitch + yOffset);
-
+	// update Front, Right and Up Vectors using the updated Euler angles
 	UpdateCameraVectiors();
 }
 

@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include <glm/glm.hpp>
+#include <glad/glad.h>
 
 class Camera
 {
@@ -52,7 +53,7 @@ public:
 
 	glm::mat4 GetViewMatrix() const;
 	void ProcessMouseScroll(float yOffset);
-	void ProcessMouseMovement(float xPos, float yPos);
+	void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true);
 	void ProcessCameraMovement(Direction direction, float delta);
 
 
