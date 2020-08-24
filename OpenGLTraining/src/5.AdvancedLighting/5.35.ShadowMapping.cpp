@@ -82,6 +82,7 @@ int main()
     // build and compile shaders
     // -------------------------
     Shader simpleDepthShader("Shaders/5.AdvancedLighting/35.ShadowMapping/5.35.ShadowMappingDepth.vs", "Shaders/5.AdvancedLighting/35.ShadowMapping/5.35.ShadowMappingDepth.fs");
+    Shader simpleShadowShader("Shaders/5.AdvancedLighting/35.ShadowMapping/5.35.ShadowMapping.vs", "Shaders/5.AdvancedLighting/35.ShadowMapping/5.35.ShadowMapping.fs");
     Shader debugDepthQuad("Shaders/5.AdvancedLighting/35.ShadowMapping/5.35.DebugQuad.vs", "Shaders/5.AdvancedLighting/35.ShadowMapping/5.35.DebugQuadDepth.fs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -89,12 +90,12 @@ int main()
     float planeVertices[] = {
         // positions            // normals         // texcoords
          25.0f, -0.5f,  25.0f,  0.0f, 1.0f, 0.0f,  25.0f,  0.0f,
-        -25.0f, -0.5f,  25.0f,  0.0f, 1.0f, 0.0f,   0.0f,  0.0f,
         -25.0f, -0.5f, -25.0f,  0.0f, 1.0f, 0.0f,   0.0f, 25.0f,
+        -25.0f, -0.5f,  25.0f,  0.0f, 1.0f, 0.0f,   0.0f,  0.0f,
 
          25.0f, -0.5f,  25.0f,  0.0f, 1.0f, 0.0f,  25.0f,  0.0f,
         -25.0f, -0.5f, -25.0f,  0.0f, 1.0f, 0.0f,   0.0f, 25.0f,
-         25.0f, -0.5f, -25.0f,  0.0f, 1.0f, 0.0f,  25.0f, 10.0f
+         25.0f, -0.5f, -25.0f,  0.0f, 1.0f, 0.0f,  25.0f, 25.0f
     };
 
     // plane VAO
@@ -139,6 +140,9 @@ int main()
 
     // shader configuration
     // --------------------
+    simpleShadowShader.Use();
+    simpleShadowShader.SetInt("diffuseTexture", 0);
+    simpleShadowShader.SetInt("shadowMap", 1);
     debugDepthQuad.Use();
     debugDepthQuad.SetInt("depthMap", 0);
 
@@ -161,7 +165,7 @@ int main()
         processInput(window);
 
         // render
-        // ------
+       // ------
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -177,7 +181,6 @@ int main()
         simpleDepthShader.Use();
         simpleDepthShader.SetMat4("lightSpaceMatrix", lightSpaceMatrix);
 
-        // 1. first render to depth map
         glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
         glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
         glClear(GL_DEPTH_BUFFER_BIT);
@@ -190,6 +193,25 @@ int main()
         glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        // 2. render scene as normal using the generated depth/shadow map  
+        // --------------------------------------------------------------
+        glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        simpleShadowShader.Use();
+        glm::mat4 projection = glm::perspective(glm::radians(camera.GetZoom()), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 view = camera.GetViewMatrix();
+        simpleShadowShader.SetMat4("projection", projection);
+        simpleShadowShader.SetMat4("view", view);
+        // set light uniforms
+        simpleShadowShader.SetVec3("viewPos", camera.GetPosition());
+        simpleShadowShader.SetVec3("lightPos", lightPos);
+        simpleShadowShader.SetMat4("lightSpaceMatrix", lightSpaceMatrix);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, woodTexture);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, depthMap);
+        renderScene(simpleShadowShader);
+
         // render Depth map to quad for visual debugging
         // ---------------------------------------------
         debugDepthQuad.Use();
@@ -197,7 +219,7 @@ int main()
         debugDepthQuad.SetFloat("far_plane", far_plane);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, depthMap);
-        renderQuad();
+        //renderQuad();
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -425,10 +447,13 @@ unsigned int loadTexture(char const* path)
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
 
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT); // for this tutorial: use GL_CLAMP_TO_EDGE to prevent semi-transparent borders. Due to interpolation it takes texels from next repeat 
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_BORDER : GL_REPEAT); // for this tutorial: use GL_CLAMP_TO_EDGE to prevent semi-transparent borders. Due to interpolation it takes texels from next repeat 
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_BORDER : GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+        glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+
 
         stbi_image_free(data);
     }
