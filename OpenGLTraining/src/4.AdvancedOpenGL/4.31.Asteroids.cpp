@@ -83,7 +83,7 @@ int main()
 	Model rock("Resources/objects/rock/rock.obj");
 	Model planet("Resources/objects/planet/planet.obj");
 
-	unsigned int amount = 100000;
+	unsigned int amount = 1000;
 	glm::mat4* modelMatrices = new glm::mat4[amount];
 	srand(glfwGetTime()); // initialize random seed
 	float radius = 50.0;

@@ -1,7 +1,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Texture/StbBuild.h"
+#include <stb/stb_image.h>
+
 #include "Shader/Shader.h"
 
 #include <iostream>

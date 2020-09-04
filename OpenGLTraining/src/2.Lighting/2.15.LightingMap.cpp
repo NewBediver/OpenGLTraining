@@ -6,9 +6,10 @@
 
 #include <iostream>
 
+#include <stb/stb_image.h>
+
 #include "Shader/Shader.h"
 #include "Camera/Camera.h"
-#include "Texture/StbBuild.h"
 
 int _width = 800;
 int _height = 600;
