@@ -7,7 +7,7 @@
 <a alt="GLFW"> <img src="https://img.shields.io/badge/GLFW-gray" /> </a>
 <a alt="GLM"> <img src="https://img.shields.io/badge/GLM-gray" /> </a>
 
-My adventure to the world of OpenGL. The main goal of this project is to learn OpenGL specification and the basic parts of graphics programming. Here you can find implementations of many common algorithms, which is used in graphics programming. To run this program you should have Visual Studio with preinstalled C/C++ compiler, all dependencies, which will be mentioned after the ToC.
+My adventure to the world of OpenGL. The main goal of this project is to learn OpenGL specification and the basic parts of graphics programming. Here you can find implementations of many common algorithms, which is used in graphics programming. To run this program you should have Visual Studio with preinstalled C/C++ MSVC compiler, all dependencies, which will be mentioned after the ToC.
 
 ## Table of Contents
 
@@ -172,7 +172,7 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
     ![](/Screenshots/5.%20Advanced%20Lighting/6.%20Parallax%20+%20Normal%20Mapping.png)
   </details>
 
-## Вependencies
+## Dependencies
 
 1. [Glad](https://glad.dav1d.de)
 2. [Glfw](https://www.glfw.org)
