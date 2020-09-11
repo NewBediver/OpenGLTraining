@@ -101,8 +101,18 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
 
 - <details>
     <summary>Framebuffer + PostEffects</summary>
-  
-    ![](/Screenshots/4.%20Advanced%20OpenGL/5.%20Framebuffer%20+%20PostEffects.png)
+ 
+    | Sharpen             |  Blur |
+    :-------------------------:|:-------------------------:
+    ![](/Screenshots/4.%20Advanced%20OpenGL/5.1.%20Framebuffer%20(Sharpen%20Posteffect).png)|![](/Screenshots/4.%20Advanced%20OpenGL/5.2.%20Framebuffer%20(Blur%20Posteffect).png)
+
+    | Edge             |  Grayscale |
+    :-------------------------:|:-------------------------:
+    ![](/Screenshots/4.%20Advanced%20OpenGL/5.3.%20Framebuffer%20(Edge%20Posteffect).png)|![](/Screenshots/4.%20Advanced%20OpenGL/5.4.%20Framebuffer%20(Grayscale%20Posteffect).png)
+
+    | Inversion |
+    :-------------------------:
+    ![](/Screenshots/4.%20Advanced%20OpenGL/5.5.%20Framebuffer%20(Inversion%20Posteffect).png)
   </details>
 
 - <details>
@@ -170,6 +180,20 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
     <summary>Parallax + Normal Mapping</summary>
   
     ![](/Screenshots/5.%20Advanced%20Lighting/6.%20Parallax%20+%20Normal%20Mapping.png)
+  </details>
+
+- <details>
+    <summary>HDR</summary>
+  
+    | Without HDR              |  With HDR |
+    :-------------------------:|:-------------------------:
+    ![](/Screenshots/5.%20Advanced%20Lighting/7.1.%20Without%20hdr.png)|![](/Screenshots/5.%20Advanced%20Lighting/7.2%20With%20hdr%20(reinhard%20%20exposure).png)
+  </details>
+
+- <details>
+    <summary>Bloom</summary>
+ 
+    ![](/Screenshots/5.%20Advanced%20Lighting/8.%20Bloom%20(with%20Gaussian%20blur).png)
   </details>
 
 ## Dependencies
