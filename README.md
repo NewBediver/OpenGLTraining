@@ -195,6 +195,21 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
  
     ![](/Screenshots/5.%20Advanced%20Lighting/8.%20Bloom%20(with%20Gaussian%20blur).png)
   </details>
+  
+- <details>
+    <summary>Deferred shading</summary>
+    
+    ![](Screenshots/5.%20Advanced%20Lighting/9.4.%20Deffered%20Shading.png)
+    
+    | GBuffer-Position             |  GBuffer-Normal | GBuffer-AlbedoSpecular|
+    :-------------------------:|:-------------------------:|:-------------------------:
+    ![](Screenshots/5.%20Advanced%20Lighting/9.1.%20GBuffer-Position.png)|![](Screenshots/5.%20Advanced%20Lighting/9.2.%20GBuffer-Normal.png)|![](Screenshots/5.%20Advanced%20Lighting/9.3.%20GBuffer-AlbegoSpecular.png)
+  </details>
+- <details>
+    <summary>SSAO</summary>
+    
+    ![](Screenshots/5.%20Advanced%20Lighting/10.%20SSAO.png)
+  </details>
 
 ## Dependencies
 
