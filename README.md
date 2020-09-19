@@ -211,6 +211,25 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
     ![](Screenshots/5.%20Advanced%20Lighting/10.%20SSAO.png)
   </details>
 
+### 5. PBR (Physically based rendering)
+- <details>
+    <summary>Basic Light</summary>
+  
+    | Without HDR and Gamma correction             |  With HDR and Gamma correction | With maps |
+    :-------------------------:|:-------------------------:|:-------------------------:
+    ![](Screenshots/6.%20PBR/1.1%20Wothout%20HDR%20and%20Gamma%20Correction.png)|![](Screenshots/6.%20PBR/1.3%20With%20HDR%20and%20Gamma%20Correction.png)|![](Screenshots/6.%20PBR/1.4%20With%20Maps.png)
+  </details>
+  
+- <details>
+    <summary>Diffusal and Specular Image Based Lighting</summary>
+  
+    | Diffusal IBL             |  Diffusal and Specular IBL |
+    :-------------------------:|:-------------------------:
+    ![](Screenshots/6.%20PBR/2.1.DiffusalIBL.png)|![](Screenshots/6.%20PBR/2.2.SpecularIBL.png)
+  </details>
+  
+
+
 ## Dependencies
 
 1. [Glad](https://glad.dav1d.de)
