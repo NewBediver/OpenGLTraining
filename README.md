@@ -230,7 +230,7 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
 
 ### 7. Addition
 - <details>
-    <summary>Basic Light</summary>
+    <summary>Debugging</summary>
   
     | Debug messages callback             |  RenderDocn |
     :-------------------------:|:-------------------------:
