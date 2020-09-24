@@ -1,0 +1,2 @@
+D:\Projects\C++\OpenGLTraining\vendor\freetype-2.10.0\objs\Win32\Debug\freetype.dll
+D:\Projects\C++\OpenGLTraining\vendor\freetype-2.10.0\objs\Win32\Debug\freetype.pdb
