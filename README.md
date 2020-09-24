@@ -211,7 +211,7 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
     ![](Screenshots/5.%20Advanced%20Lighting/10.%20SSAO.png)
   </details>
 
-### 5. PBR (Physically based rendering)
+### 6. PBR (Physically based rendering)
 - <details>
     <summary>Basic Light</summary>
   
@@ -227,7 +227,21 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
     :-------------------------:|:-------------------------:
     ![](Screenshots/6.%20PBR/2.1.DiffusalIBL.png)|![](Screenshots/6.%20PBR/2.2.SpecularIBL.png)
   </details>
+
+### 7. Addition
+- <details>
+    <summary>Basic Light</summary>
   
+    | Debug messages callback             |  RenderDocn |
+    :-------------------------:|:-------------------------:
+    ![](Screenshots/7.%20Addition/1.1%20Debug%20Messages.png)|![](Screenshots/7.%20Addition/1.2%20RenderDoc.png)
+  </details>
+  
+- <details>
+    <summary>Text Rendering</summary>
+  
+    ![](Screenshots/7.%20Addition/2%20Text%20Rendering.png)
+  </details>
 
 
 ## Dependencies
