@@ -251,6 +251,7 @@ My adventure to the world of OpenGL. The main goal of this project is to learn O
 3. [Glm](https://glm.g-truc.net/0.9.9/index.html)
 4. [Stb](https://github.com/nothings/stb)
 5. [Assimp](https://www.assimp.org)
+6. [Freetype](https://www.freetype.org)
 
 ### Apache 2.0 license synopsis
 
